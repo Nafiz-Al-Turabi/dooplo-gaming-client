@@ -3,12 +3,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { IoClose, IoMenuOutline } from "react-icons/io5";
+import { IoIosSunny } from "react-icons/io";
+import { FaCloudMoon } from "react-icons/fa";
 import { useTheme } from "../Theme/ThemeProvider";
 
 const Navbar = () => {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-  const {theme,toggleTheme } = useTheme();
 
   const navItems = [
     { href: "/", label: "Home" },
@@ -22,17 +23,12 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#c2c2c2] shadow-lg dark:shadow-none dark:bg-[#252f5a]">
+    <div className="bg-zinc shadow dark:shadow-none dark:bg-[#252f5a]">
       <div className="max-w-[1250px] mx-auto flex justify-between items-center p-4">
         <Link href="/" className="ml-2">
-          <img src="/images/logo.png" alt="logo" className="h-8" />
+          {/* <img src="/images/logo.png" alt="logo" className="h-8" /> */}
+          <h1 className="text-2xl font-bold text-red-600"> <span className="text-3xl font-extrabold">V</span><span className="dark:text-[#a1aed4]">Gamin</span>g</h1>
         </Link>
-        <button
-      onClick={toggleTheme}
-      className="p-2 bg-gray-200 dark:bg-gray-800 rounded-md shadow"
-    >
-      {theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-    </button>
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex space-x-10 items-center">
@@ -53,6 +49,7 @@ const Navbar = () => {
           <button className="bg-gradient-to-l to-red-600 text-white from-red-500 py-3 px-8 rounded-full text-base font-semibold uppercase hover:bg-gradient-to-l hover:to-red-500 hover:from-red-600 duration-300 hover:-translate-y-0.5">
             Join us
           </button>
+          
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -60,7 +57,11 @@ const Navbar = () => {
           className="lg:hidden flex items-center justify-center w-8 h-8 bg-red-500 text-white rounded-md"
           onClick={toggleMenu}
         >
-          {menuOpen ? <IoClose className="text-2xl" />: <IoMenuOutline className="text-2xl " />}
+          {menuOpen ? (
+            <IoClose className="text-2xl" />
+          ) : (
+            <IoMenuOutline className="text-2xl " />
+          )}
         </button>
       </div>
 

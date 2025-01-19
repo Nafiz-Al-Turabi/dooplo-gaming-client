@@ -2,6 +2,7 @@ import { Geist, Geist_Mono, Open_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import ThemeProvider from "@/components/Theme/ThemeProvider";
+import Settings from "@/components/Settings/Settings";
 
 export const metadata = {
   title: "Create Next App",
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
       <body>
         <ThemeProvider>
           <Navbar />
+          <Settings />
           {children}
         </ThemeProvider>
       </body>

@@ -5,25 +5,20 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  transition: background 0.3s ease, color 0.3s ease; 
 }
 
 .dark {
   --background: #070b28;
   --foreground: #ededed;
 }
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #070b28;
-    --foreground: #ededed;
-  }
-} */
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: "Open Sans", serif;
+  transition: background 0.3s ease, color 0.3s ease; 
 }
-
 
 
 
