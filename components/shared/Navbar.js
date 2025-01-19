@@ -3,10 +3,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { IoClose, IoMenuOutline } from "react-icons/io5";
+import { useTheme } from "../Theme/ThemeProvider";
 
 const Navbar = () => {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const {theme,toggleTheme } = useTheme();
 
   const navItems = [
     { href: "/", label: "Home" },
@@ -20,12 +22,17 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#b8b8b8] dark:bg-[#252f5a]">
+    <div className="bg-[#c2c2c2] shadow-lg dark:shadow-none dark:bg-[#252f5a]">
       <div className="max-w-[1250px] mx-auto flex justify-between items-center p-4">
-        {/* Logo Section */}
         <Link href="/" className="ml-2">
           <img src="/images/logo.png" alt="logo" className="h-8" />
         </Link>
+        <button
+      onClick={toggleTheme}
+      className="p-2 bg-gray-200 dark:bg-gray-800 rounded-md shadow"
+    >
+      {theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+    </button>
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex space-x-10 items-center">
@@ -37,7 +44,7 @@ const Navbar = () => {
                 (pathname === item.href
                   ? "text-red-600 border-y-2 border-opacity-100 py-3 "
                   : "") +
-                "px-2 font-bold uppercase border-red-600 hover:py-3 hover:text-red-600 hover:border-y-2 border-opacity-0 hover:border-opacity-100 duration-300"
+                " dark:text-[[#a1aed4] px-2 font-bold uppercase border-red-600 hover:py-3 hover:text-red-600 hover:border-y-2 border-opacity-0 hover:border-opacity-100 duration-300"
               }
             >
               {item.label}
