@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import ThemeProvider from "@/components/Theme/ThemeProvider";
 import Settings from "@/components/Settings/Settings";
+import TopBar from "@/components/shared/TopBar";
 
 export const metadata = {
   title: "Create Next App",
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <ThemeProvider>
+          <TopBar />
           <Navbar />
           <Settings />
           {children}

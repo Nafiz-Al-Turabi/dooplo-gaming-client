@@ -3,9 +3,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { IoClose, IoMenuOutline } from "react-icons/io5";
-import { IoIosSunny } from "react-icons/io";
-import { FaCloudMoon } from "react-icons/fa";
-import { useTheme } from "../Theme/ThemeProvider";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -23,8 +20,8 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-zinc shadow dark:shadow-none dark:bg-[#252f5a]">
-      <div className="max-w-[1250px] mx-auto flex justify-between items-center p-4">
+    <div className="bg-zinc shadow dark:shadow-none dark:bg-[#252f5a] ">
+      <div className="max-w-[1250px] mx-auto flex justify-between items-center py-4">
         <Link href="/" className="ml-2">
           {/* <img src="/images/logo.png" alt="logo" className="h-8" /> */}
           <h1 className="text-2xl font-bold text-red-600"> <span className="text-3xl font-extrabold">V</span><span className="dark:text-[#a1aed4]">Gamin</span>g</h1>
@@ -67,7 +64,7 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       <div
-        className={`block lg:hidden fixed top-16 right-0 h-full bg-[#b8b8b8] dark:bg-[#252f5a] shadow-lg transform ${
+        className={`block lg:hidden fixed top-40 right-0 h-full bg-white dark:bg-[#252f5a] shadow-lg transform ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out z-50 w-3/4 max-w-sm`}
       >
