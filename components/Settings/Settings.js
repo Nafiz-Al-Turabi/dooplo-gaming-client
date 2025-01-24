@@ -15,7 +15,7 @@ const Settings = () => {
   };
   return (
     <div
-      className={`fixed top-32 z-50 transition-transform duration-300 ease-in-out transform ${
+      className={`fixed top-32 z-40 transition-transform duration-300 ease-in-out transform ${
         isOpen ? "translate-x-0" : "translate-x-full"
       } right-0`}
     >
