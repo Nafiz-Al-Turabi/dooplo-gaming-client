@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body>
+      <body className="select-none">
         <ThemeProvider>
           <TopBar />
           <Navbar />

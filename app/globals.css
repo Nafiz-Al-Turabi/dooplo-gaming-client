@@ -23,43 +23,31 @@ body {
 
 /* ======================================================== */
 
-
-@keyframes animates-login {
+@keyframes fadeUp {
   0% {
     opacity: 0;
-    transform: translateX(100%); 
-  }
-  50% {
-    opacity: 0.5;
-    transform: translateX(-10%); 
   }
   100% {
     opacity: 1;
-    transform: translateX(0); 
   }
 }
 
-.animate-login {
-  animation: animates-login 1.5s ease-in-out forwards;
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
-  
-  @keyframes animates-signup {
-    0% {
-      opacity: 0;
-      transform: translateX(-100%); 
-    }
-    50% {
-      opacity: 0.5;
-      transform: translateX(10%); 
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0); 
-    }
-  }
-  
-  .animate-signup {
-    animation: animates-signup 1.5s ease-in-out forwards;
-  }
+/* Utility classes for animations */
+.fade-up {
+  animation: fadeUp 0.5s ease-out forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.3s ease-out forwards;
+}
+
 /* =========================================================== */
