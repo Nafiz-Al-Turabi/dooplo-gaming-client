@@ -21,7 +21,45 @@ body {
 }
 
 
-.clipped-div {
- clip-path:polygon(0 0, 100% 0, 100% 100%, 8% 100%);
+/* ======================================================== */
+
+
+@keyframes animates-login {
+  0% {
+    opacity: 0;
+    transform: translateX(100%); 
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(-10%); 
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); 
+  }
 }
 
+.animate-login {
+  animation: animates-login 1.5s ease-in-out forwards;
+}
+
+  
+  @keyframes animates-signup {
+    0% {
+      opacity: 0;
+      transform: translateX(-100%); 
+    }
+    50% {
+      opacity: 0.5;
+      transform: translateX(10%); 
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0); 
+    }
+  }
+  
+  .animate-signup {
+    animation: animates-signup 1.5s ease-in-out forwards;
+  }
+/* =========================================================== */
