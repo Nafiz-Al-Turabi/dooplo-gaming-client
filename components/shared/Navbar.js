@@ -37,13 +37,12 @@ const Navbar = () => {
       className={`${
         isScrolled
           ? "fixed top-0 left-0 w-full shadow-lg bg-zinc-50 dark:bg-[#252f5a] transition-transform duration-300"
-          : "bg-zinc-50 dark:bg-[#252f5a] shadow relative"
+          : "bg-zinc-50 dark:bg-[#252f5a] shadow dark:shadow-none relative"
       } z-40`}
     >
       <div className="hidden lg:block inset-0 absolute top-0 left-0 w-0  xl:w-[10%] 2xl:w-[18%] h-full bg-[#252f5a] dark:bg-[#070b28] [clip-path:polygon(0_0,85%_0,100%_100%,0%_100%)]"></div>
       <div className="max-w-[1250px] mx-auto flex justify-between items-center py-4 px-4 lg:px-0">
         <Link href="/" className="ml-2">
-          {/* <img src="/images/logo.png" alt="logo" className="h-8" /> */}
           <h1 className="text-2xl font-bold text-red-600 xl:pl-12 2xl:pl-0">
             {" "}
             <span className="text-3xl font-extrabold">V</span>
