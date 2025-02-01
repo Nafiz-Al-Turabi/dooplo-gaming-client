@@ -4,8 +4,10 @@ import { FaUser } from "react-icons/fa";
 import { IoCart, IoNotifications } from "react-icons/io5";
 import { MdEmail, MdSupportAgent } from "react-icons/md";
 import Authentication from "../Authentication/Authentication";
+import { useAuth } from "@/app/context/AuthContext";
 
 const TopBar = () => {
+  const { user, logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const handleOpen = () => {
     setIsOpen(true);
@@ -38,10 +40,19 @@ const TopBar = () => {
           </div>
           <span className="text-lg font-semibold">|</span>
           <div>
-            <button onClick={handleOpen} className="flex items-center text-lg font-semibold gap-2">
-              <FaUser className="text-xl" />
-              Login
-            </button>
+            {
+              user ? (
+                <button onClick={logout} className="flex items-center text-lg font-semibold gap-2">
+                  <FaUser className="text-xl" />
+                  Logout
+                </button>
+              ) : (
+                <button onClick={handleOpen} className="flex items-center text-lg font-semibold gap-2">
+                  <FaUser className="text-xl" />
+                  Login
+                </button>
+              )
+            }
           </div>
         </div>
       </div>

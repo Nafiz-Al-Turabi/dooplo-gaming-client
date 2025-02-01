@@ -128,14 +128,54 @@ export const login = async (req) => {
   }
 };
 
-export const getProfile = async (req) => {
-  await dbConnect();
-
+// Get authenticated user
+export const getAuthenticatedUser = async (req) => {
   try {
-    const userId = await authMiddleware(req);
-    const user = await User.findById(userId).select('-password');
-    return Response.json(user, { status: 200 });
+    const cookieStore = cookies();
+    const token = cookieStore.get('token');
+
+    if (!token) {
+      return Response.json({ message: 'Not authenticated' }, { status: 401 });
+    }
+
+    // Verify token and get user ID
+    const decoded = jwt.verify(token.value, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.id).select('-password');
+
+    if (!user) {
+      return Response.json({ message: 'User not found' }, { status: 404 }); 
+    }
+
+    return Response.json({
+      success: true,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email
+      }
+    });
+
   } catch (error) {
-    return Response.json({ message: error.message }, { status: 401 });
+    console.error('Get authenticated user error:', error);
+    return Response.json({ message: 'Server error', error: error.message }, { status: 500 });
+  }
+};
+
+// Logout user
+export const logout = async () => {
+  try {
+    const cookieStore = cookies();
+    
+    // Clear the token cookie
+    cookieStore.delete('token');
+
+    return Response.json({ 
+      success: true,
+      message: 'Logged out successfully'
+    });
+
+  } catch (error) {
+    console.error('Logout error:', error);
+    return Response.json({ message: 'Server error', error: error.message }, { status: 500 });
   }
 };
