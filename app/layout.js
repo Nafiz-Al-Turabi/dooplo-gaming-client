@@ -4,6 +4,7 @@ import Navbar from "@/components/shared/Navbar";
 import ThemeProvider from "@/components/Theme/ThemeProvider";
 import Settings from "@/components/Settings/Settings";
 import TopBar from "@/components/shared/TopBar";
+import { AuthProvider } from "./context/AuthContext";
 
 export const metadata = {
   title: "Create Next App",
@@ -24,12 +25,14 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="select-none">
-        <ThemeProvider>
-          <TopBar />
-          <Navbar />
-          <Settings />
-          {children}
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider>
+            <TopBar />
+            <Navbar />
+            <Settings />
+            {children}
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -12,7 +12,7 @@ export const authMiddleware = async (req) => {
 
   try {
     const decoded = verifyToken(token);
-    return decoded.userId;
+    return decoded.name;
   } catch (error) {
     throw new Error('Invalid token');
   }

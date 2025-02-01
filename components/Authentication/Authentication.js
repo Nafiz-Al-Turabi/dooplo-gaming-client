@@ -2,11 +2,13 @@
 import React, { useState } from "react";
 import { RiCloseLargeLine } from "react-icons/ri";
 import { useForm } from "react-hook-form";
+import { useAuth } from "@/app/context/AuthContext";
 
 const Authentication = ({ isOpen, onClose }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const { login, register } = useAuth();
 
   const loginForm = useForm({
     defaultValues: {
@@ -24,25 +26,14 @@ const Authentication = ({ isOpen, onClose }) => {
   });
 
   const onLoginSubmit = async (data) => {
-    const response = await fetch('/api/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
+    const response = await login(data.email, data.password);
     console.log("Login data:", data);
+    console.log("Login response:", response);
   };
 
   const onSignupSubmit = async (data) => {
-    const response = await fetch('/api/auth/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-    console.log("Signup data:", data);
+    const response = await register(data.name, data.email, data.password);
+    console.log("Signup response:", response);
   };
 
   const handleToggle = () => {
