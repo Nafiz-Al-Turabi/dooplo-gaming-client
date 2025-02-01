@@ -1,7 +1,10 @@
 import { verifyToken } from '../lib/jwt';
+import { cookies } from 'next/headers';
 
 export const authMiddleware = async (req) => {
-  const token = req.headers.get('authorization')?.split(' ')[1];
+  // Get token from cookies using next/headers
+  const cookieStore = cookies();
+  const token = cookieStore.get('token')?.value;
 
   if (!token) {
     throw new Error('No token provided');

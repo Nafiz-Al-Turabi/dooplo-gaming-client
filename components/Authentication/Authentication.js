@@ -23,11 +23,25 @@ const Authentication = ({ isOpen, onClose }) => {
     },
   });
 
-  const onLoginSubmit = (data) => {
+  const onLoginSubmit = async (data) => {
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
     console.log("Login data:", data);
   };
 
-  const onSignupSubmit = (data) => {
+  const onSignupSubmit = async (data) => {
+    const response = await fetch('/api/auth/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
     console.log("Signup data:", data);
   };
 
